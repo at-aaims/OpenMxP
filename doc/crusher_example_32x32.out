@@ -1,0 +1,192 @@
+===============================================================================
+OpenMxP - High Performance Mixed Precision Benchmark - NCCS/OLCF
+===============================================================================
+Build Info: git branch: [], hash-id: []
+Running configuration:
+	Ranks = 1024
+	OpenMP threads = 7
+	PxQ 32x32
+	cusolver/rocsolver Sgetrf
+	2ringM comm
+	1ring dcomm
+	Node Grid - 2x4R pxq grid
+	no sync on sgemm
+	default stream sgemm
+	gpu direct mpi
+	GPU Initialization
+	Alt-Trsm Method
+	Building panels
+	gpu p[62940774400] l[1284505600] r[1284505600] ... tot[65509785600]
+	Finished building panels
+	gpu d_piv[26214400]
+	Initialization 1 = 2.1105 sec
+	Gpu memory (free/total) 2978675712/68702699520	jobid=290129
+	n=4014080 ln=125440 b=2560 r=32 c=32 epoch_size=81920
+#BEGIN_: Mon Mar 27 04:30:59 2023
+Entering LU
+Step 10, Rank 0, Elapsed 5.80, Work left 98.10%, Time left: 299.50, Est Total: 305.30, GFlops: 141233934.16, TFlops/GPU: 137.92
+Step 20, Rank 0, Elapsed 11.19, Work left 96.22%, Time left: 285.07, Est Total: 296.27, GFlops: 145540752.65, TFlops/GPU: 142.13
+Step 30, Rank 0, Elapsed 16.27, Work left 94.37%, Time left: 272.65, Est Total: 288.92, GFlops: 149241859.39, TFlops/GPU: 145.74
+Step 40, Rank 0, Elapsed 21.67, Work left 92.54%, Time left: 268.80, Est Total: 290.46, GFlops: 148447771.05, TFlops/GPU: 144.97
+Step 50, Rank 0, Elapsed 26.81, Work left 90.74%, Time left: 262.57, Est Total: 289.38, GFlops: 149005030.04, TFlops/GPU: 145.51
+Step 60, Rank 0, Elapsed 31.87, Work left 88.95%, Time left: 256.63, Est Total: 288.49, GFlops: 149462321.26, TFlops/GPU: 145.96
+Step 70, Rank 0, Elapsed 37.07, Work left 87.20%, Time left: 252.46, Est Total: 289.53, GFlops: 148928266.10, TFlops/GPU: 145.44
+Step 80, Rank 0, Elapsed 41.79, Work left 85.46%, Time left: 245.63, Est Total: 287.42, GFlops: 150020347.73, TFlops/GPU: 146.50
+Step 90, Rank 0, Elapsed 46.81, Work left 83.75%, Time left: 241.26, Est Total: 288.08, GFlops: 149678958.04, TFlops/GPU: 146.17
+Step 100, Rank 0, Elapsed 51.87, Work left 82.06%, Time left: 237.28, Est Total: 289.15, GFlops: 149122148.49, TFlops/GPU: 145.63
+Step 110, Rank 0, Elapsed 56.42, Work left 80.40%, Time left: 231.39, Est Total: 287.81, GFlops: 149817072.91, TFlops/GPU: 146.31
+Step 120, Rank 0, Elapsed 61.32, Work left 78.75%, Time left: 227.28, Est Total: 288.60, GFlops: 149406456.37, TFlops/GPU: 145.90
+Step 130, Rank 0, Elapsed 66.06, Work left 77.13%, Time left: 222.84, Est Total: 288.90, GFlops: 149249133.14, TFlops/GPU: 145.75
+Step 140, Rank 0, Elapsed 70.46, Work left 75.53%, Time left: 217.53, Est Total: 287.98, GFlops: 149726580.18, TFlops/GPU: 146.22
+Step 150, Rank 0, Elapsed 75.06, Work left 73.96%, Time left: 213.19, Est Total: 288.25, GFlops: 149587093.28, TFlops/GPU: 146.08
+Step 160, Rank 0, Elapsed 79.31, Work left 72.41%, Time left: 208.09, Est Total: 287.40, GFlops: 150031527.43, TFlops/GPU: 146.52
+Step 170, Rank 0, Elapsed 83.98, Work left 70.87%, Time left: 204.34, Est Total: 288.32, GFlops: 149550099.31, TFlops/GPU: 146.05
+Step 180, Rank 0, Elapsed 88.45, Work left 69.36%, Time left: 200.25, Est Total: 288.69, GFlops: 149358082.93, TFlops/GPU: 145.86
+Step 190, Rank 0, Elapsed 92.67, Work left 67.87%, Time left: 195.79, Est Total: 288.46, GFlops: 149481419.72, TFlops/GPU: 145.98
+Step 200, Rank 0, Elapsed 97.01, Work left 66.41%, Time left: 191.78, Est Total: 288.79, GFlops: 149309802.78, TFlops/GPU: 145.81
+Step 210, Rank 0, Elapsed 101.15, Work left 64.96%, Time left: 187.55, Est Total: 288.70, GFlops: 149355346.72, TFlops/GPU: 145.85
+Step 220, Rank 0, Elapsed 105.30, Work left 63.54%, Time left: 183.49, Est Total: 288.78, GFlops: 149312297.08, TFlops/GPU: 145.81
+Step 230, Rank 0, Elapsed 109.39, Work left 62.13%, Time left: 179.50, Est Total: 288.89, GFlops: 149255627.55, TFlops/GPU: 145.76
+Step 240, Rank 0, Elapsed 113.16, Work left 60.75%, Time left: 175.15, Est Total: 288.30, GFlops: 149560060.54, TFlops/GPU: 146.05
+Step 250, Rank 0, Elapsed 117.20, Work left 59.39%, Time left: 171.39, Est Total: 288.59, GFlops: 149409467.15, TFlops/GPU: 145.91
+Step 260, Rank 0, Elapsed 121.22, Work left 58.05%, Time left: 167.73, Est Total: 288.96, GFlops: 149221845.23, TFlops/GPU: 145.72
+Step 270, Rank 0, Elapsed 124.88, Work left 56.73%, Time left: 163.71, Est Total: 288.59, GFlops: 149410745.17, TFlops/GPU: 145.91
+Step 280, Rank 0, Elapsed 128.76, Work left 55.43%, Time left: 160.10, Est Total: 288.85, GFlops: 149275326.59, TFlops/GPU: 145.78
+Step 290, Rank 0, Elapsed 132.58, Work left 54.14%, Time left: 156.54, Est Total: 289.12, GFlops: 149137334.16, TFlops/GPU: 145.64
+Step 300, Rank 0, Elapsed 136.07, Work left 52.88%, Time left: 152.73, Est Total: 288.80, GFlops: 149305621.26, TFlops/GPU: 145.81
+Step 310, Rank 0, Elapsed 139.64, Work left 51.64%, Time left: 149.13, Est Total: 288.77, GFlops: 149319831.15, TFlops/GPU: 145.82
+Step 320, Rank 0, Elapsed 143.02, Work left 50.42%, Time left: 145.45, Est Total: 288.47, GFlops: 149471644.59, TFlops/GPU: 145.97
+Step 330, Rank 0, Elapsed 146.69, Work left 49.22%, Time left: 142.17, Est Total: 288.86, GFlops: 149274742.08, TFlops/GPU: 145.78
+Step 340, Rank 0, Elapsed 150.10, Work left 48.03%, Time left: 138.75, Est Total: 288.84, GFlops: 149280135.18, TFlops/GPU: 145.78
+Step 350, Rank 0, Elapsed 153.38, Work left 46.87%, Time left: 135.31, Est Total: 288.70, GFlops: 149357426.93, TFlops/GPU: 145.86
+Step 360, Rank 0, Elapsed 156.84, Work left 45.73%, Time left: 132.14, Est Total: 288.98, GFlops: 149208174.53, TFlops/GPU: 145.71
+Step 370, Rank 0, Elapsed 160.12, Work left 44.60%, Time left: 128.90, Est Total: 289.02, GFlops: 149187823.39, TFlops/GPU: 145.69
+Step 380, Rank 0, Elapsed 163.25, Work left 43.49%, Time left: 125.64, Est Total: 288.89, GFlops: 149256953.84, TFlops/GPU: 145.76
+Step 390, Rank 0, Elapsed 166.55, Work left 42.40%, Time left: 122.61, Est Total: 289.16, GFlops: 149115792.58, TFlops/GPU: 145.62
+Step 400, Rank 0, Elapsed 169.47, Work left 41.33%, Time left: 119.39, Est Total: 288.86, GFlops: 149273109.20, TFlops/GPU: 145.77
+Step 410, Rank 0, Elapsed 172.63, Work left 40.28%, Time left: 116.44, Est Total: 289.07, GFlops: 149165550.90, TFlops/GPU: 145.67
+Step 420, Rank 0, Elapsed 175.89, Work left 39.25%, Time left: 113.62, Est Total: 289.50, GFlops: 148940771.20, TFlops/GPU: 145.45
+Step 430, Rank 0, Elapsed 178.74, Work left 38.23%, Time left: 110.62, Est Total: 289.35, GFlops: 149017949.20, TFlops/GPU: 145.53
+Step 440, Rank 0, Elapsed 181.67, Work left 37.23%, Time left: 107.75, Est Total: 289.42, GFlops: 148984267.03, TFlops/GPU: 145.49
+Step 450, Rank 0, Elapsed 184.76, Work left 36.25%, Time left: 105.05, Est Total: 289.82, GFlops: 148778772.01, TFlops/GPU: 145.29
+Step 460, Rank 0, Elapsed 187.67, Work left 35.28%, Time left: 102.32, Est Total: 289.99, GFlops: 148689121.80, TFlops/GPU: 145.20
+Step 470, Rank 0, Elapsed 190.59, Work left 34.34%, Time left: 99.67, Est Total: 290.26, GFlops: 148551035.05, TFlops/GPU: 145.07
+Step 480, Rank 0, Elapsed 193.40, Work left 33.41%, Time left: 97.02, Est Total: 290.42, GFlops: 148470412.52, TFlops/GPU: 144.99
+Step 490, Rank 0, Elapsed 196.30, Work left 32.50%, Time left: 94.50, Est Total: 290.80, GFlops: 148276490.22, TFlops/GPU: 144.80
+Step 500, Rank 0, Elapsed 198.98, Work left 31.60%, Time left: 91.92, Est Total: 290.90, GFlops: 148223368.54, TFlops/GPU: 144.75
+Step 510, Rank 0, Elapsed 201.66, Work left 30.72%, Time left: 89.42, Est Total: 291.08, GFlops: 148133057.74, TFlops/GPU: 144.66
+Step 520, Rank 0, Elapsed 204.52, Work left 29.86%, Time left: 87.06, Est Total: 291.58, GFlops: 147879597.86, TFlops/GPU: 144.41
+Step 530, Rank 0, Elapsed 207.32, Work left 29.01%, Time left: 84.72, Est Total: 292.04, GFlops: 147646915.93, TFlops/GPU: 144.19
+Step 540, Rank 0, Elapsed 209.89, Work left 28.18%, Time left: 82.36, Est Total: 292.25, GFlops: 147542523.61, TFlops/GPU: 144.08
+Step 550, Rank 0, Elapsed 212.77, Work left 27.37%, Time left: 80.16, Est Total: 292.93, GFlops: 147198233.90, TFlops/GPU: 143.75
+Step 560, Rank 0, Elapsed 215.48, Work left 26.57%, Time left: 77.96, Est Total: 293.44, GFlops: 146941771.26, TFlops/GPU: 143.50
+Step 570, Rank 0, Elapsed 218.30, Work left 25.78%, Time left: 75.84, Est Total: 294.14, GFlops: 146594025.82, TFlops/GPU: 143.16
+Step 580, Rank 0, Elapsed 221.14, Work left 25.02%, Time left: 73.78, Est Total: 294.92, GFlops: 146206048.63, TFlops/GPU: 142.78
+Step 590, Rank 0, Elapsed 223.38, Work left 24.26%, Time left: 71.57, Est Total: 294.96, GFlops: 146187623.15, TFlops/GPU: 142.76
+Step 600, Rank 0, Elapsed 225.77, Work left 23.53%, Time left: 69.46, Est Total: 295.23, GFlops: 146050029.72, TFlops/GPU: 142.63
+Step 610, Rank 0, Elapsed 228.33, Work left 22.81%, Time left: 67.46, Est Total: 295.79, GFlops: 145777103.24, TFlops/GPU: 142.36
+Step 620, Rank 0, Elapsed 230.38, Work left 22.10%, Time left: 65.36, Est Total: 295.74, GFlops: 145798381.88, TFlops/GPU: 142.38
+Step 630, Rank 0, Elapsed 232.51, Work left 21.41%, Time left: 63.33, Est Total: 295.85, GFlops: 145746978.11, TFlops/GPU: 142.33
+Step 640, Rank 0, Elapsed 234.55, Work left 20.73%, Time left: 61.34, Est Total: 295.89, GFlops: 145724876.59, TFlops/GPU: 142.31
+Step 650, Rank 0, Elapsed 236.68, Work left 20.07%, Time left: 59.42, Est Total: 296.09, GFlops: 145625613.43, TFlops/GPU: 142.21
+Step 660, Rank 0, Elapsed 238.65, Work left 19.42%, Time left: 57.51, Est Total: 296.16, GFlops: 145590555.99, TFlops/GPU: 142.18
+Step 670, Rank 0, Elapsed 240.52, Work left 18.78%, Time left: 55.63, Est Total: 296.15, GFlops: 145599001.44, TFlops/GPU: 142.19
+Step 680, Rank 0, Elapsed 242.66, Work left 18.16%, Time left: 53.86, Est Total: 296.52, GFlops: 145416335.10, TFlops/GPU: 142.01
+Step 690, Rank 0, Elapsed 244.73, Work left 17.56%, Time left: 52.12, Est Total: 296.84, GFlops: 145257936.33, TFlops/GPU: 141.85
+Step 700, Rank 0, Elapsed 246.51, Work left 16.96%, Time left: 50.36, Est Total: 296.88, GFlops: 145242252.85, TFlops/GPU: 141.84
+Step 710, Rank 0, Elapsed 248.49, Work left 16.38%, Time left: 48.69, Est Total: 297.18, GFlops: 145094182.05, TFlops/GPU: 141.69
+Step 720, Rank 0, Elapsed 250.11, Work left 15.82%, Time left: 47.00, Est Total: 297.11, GFlops: 145129124.89, TFlops/GPU: 141.73
+Step 730, Rank 0, Elapsed 251.83, Work left 15.26%, Time left: 45.37, Est Total: 297.19, GFlops: 145087115.70, TFlops/GPU: 141.69
+Step 740, Rank 0, Elapsed 253.82, Work left 14.72%, Time left: 43.83, Est Total: 297.64, GFlops: 144867494.55, TFlops/GPU: 141.47
+Step 750, Rank 0, Elapsed 255.48, Work left 14.20%, Time left: 42.27, Est Total: 297.75, GFlops: 144813197.16, TFlops/GPU: 141.42
+Step 760, Rank 0, Elapsed 257.17, Work left 13.68%, Time left: 40.77, Est Total: 297.94, GFlops: 144721851.75, TFlops/GPU: 141.33
+Step 770, Rank 0, Elapsed 259.19, Work left 13.18%, Time left: 39.35, Est Total: 298.54, GFlops: 144433250.11, TFlops/GPU: 141.05
+Step 780, Rank 0, Elapsed 260.62, Work left 12.69%, Time left: 37.89, Est Total: 298.51, GFlops: 144446447.66, TFlops/GPU: 141.06
+Step 790, Rank 0, Elapsed 262.24, Work left 12.22%, Time left: 36.49, Est Total: 298.74, GFlops: 144337785.04, TFlops/GPU: 140.95
+Step 800, Rank 0, Elapsed 263.77, Work left 11.75%, Time left: 35.12, Est Total: 298.89, GFlops: 144261263.33, TFlops/GPU: 140.88
+Step 810, Rank 0, Elapsed 265.26, Work left 11.30%, Time left: 33.78, Est Total: 299.04, GFlops: 144191800.49, TFlops/GPU: 140.81
+Step 820, Rank 0, Elapsed 266.68, Work left 10.86%, Time left: 32.48, Est Total: 299.16, GFlops: 144134032.45, TFlops/GPU: 140.76
+Step 830, Rank 0, Elapsed 267.88, Work left 10.43%, Time left: 31.18, Est Total: 299.07, GFlops: 144178542.86, TFlops/GPU: 140.80
+Step 840, Rank 0, Elapsed 269.42, Work left 10.01%, Time left: 29.96, Est Total: 299.38, GFlops: 144024953.37, TFlops/GPU: 140.65
+Step 850, Rank 0, Elapsed 270.83, Work left 9.60%, Time left: 28.77, Est Total: 299.59, GFlops: 143923933.29, TFlops/GPU: 140.55
+Step 860, Rank 0, Elapsed 272.05, Work left 9.21%, Time left: 27.58, Est Total: 299.64, GFlops: 143903822.32, TFlops/GPU: 140.53
+Step 870, Rank 0, Elapsed 273.46, Work left 8.82%, Time left: 26.46, Est Total: 299.91, GFlops: 143770997.23, TFlops/GPU: 140.40
+Step 880, Rank 0, Elapsed 274.54, Work left 8.45%, Time left: 25.33, Est Total: 299.88, GFlops: 143789234.27, TFlops/GPU: 140.42
+Step 890, Rank 0, Elapsed 275.72, Work left 8.08%, Time left: 24.25, Est Total: 299.97, GFlops: 143742864.39, TFlops/GPU: 140.37
+Step 900, Rank 0, Elapsed 277.05, Work left 7.73%, Time left: 23.22, Est Total: 300.27, GFlops: 143601737.67, TFlops/GPU: 140.24
+Step 910, Rank 0, Elapsed 278.04, Work left 7.39%, Time left: 22.19, Est Total: 300.23, GFlops: 143620576.13, TFlops/GPU: 140.25
+Step 920, Rank 0, Elapsed 279.08, Work left 7.06%, Time left: 21.19, Est Total: 300.28, GFlops: 143596488.77, TFlops/GPU: 140.23
+Step 930, Rank 0, Elapsed 280.31, Work left 6.74%, Time left: 20.25, Est Total: 300.56, GFlops: 143463799.97, TFlops/GPU: 140.10
+Step 940, Rank 0, Elapsed 281.25, Work left 6.42%, Time left: 19.31, Est Total: 300.56, GFlops: 143460769.82, TFlops/GPU: 140.10
+Step 950, Rank 0, Elapsed 282.29, Work left 6.12%, Time left: 18.41, Est Total: 300.70, GFlops: 143397108.83, TFlops/GPU: 140.04
+Step 960, Rank 0, Elapsed 283.28, Work left 5.83%, Time left: 17.54, Est Total: 300.82, GFlops: 143337182.00, TFlops/GPU: 139.98
+Step 970, Rank 0, Elapsed 284.28, Work left 5.55%, Time left: 16.70, Est Total: 300.97, GFlops: 143264125.56, TFlops/GPU: 139.91
+Step 980, Rank 0, Elapsed 285.20, Work left 5.27%, Time left: 15.88, Est Total: 301.08, GFlops: 143214038.71, TFlops/GPU: 139.86
+Step 990, Rank 0, Elapsed 285.99, Work left 5.01%, Time left: 15.08, Est Total: 301.07, GFlops: 143216965.77, TFlops/GPU: 139.86
+Step 1000, Rank 0, Elapsed 287.05, Work left 4.75%, Time left: 14.33, Est Total: 301.38, GFlops: 143071779.56, TFlops/GPU: 139.72
+Step 1010, Rank 0, Elapsed 287.85, Work left 4.51%, Time left: 13.58, Est Total: 301.43, GFlops: 143045912.50, TFlops/GPU: 139.69
+Step 1020, Rank 0, Elapsed 288.59, Work left 4.27%, Time left: 12.87, Est Total: 301.46, GFlops: 143035383.98, TFlops/GPU: 139.68
+Step 1030, Rank 0, Elapsed 289.53, Work left 4.04%, Time left: 12.19, Est Total: 301.72, GFlops: 142912294.41, TFlops/GPU: 139.56
+Step 1040, Rank 0, Elapsed 290.22, Work left 3.82%, Time left: 11.52, Est Total: 301.74, GFlops: 142898236.78, TFlops/GPU: 139.55
+Step 1050, Rank 0, Elapsed 291.01, Work left 3.61%, Time left: 10.88, Est Total: 301.89, GFlops: 142829714.18, TFlops/GPU: 139.48
+Step 1060, Rank 0, Elapsed 291.89, Work left 3.40%, Time left: 10.28, Est Total: 302.17, GFlops: 142698214.25, TFlops/GPU: 139.35
+Step 1070, Rank 0, Elapsed 292.49, Work left 3.20%, Time left: 9.68, Est Total: 302.17, GFlops: 142698739.05, TFlops/GPU: 139.35
+Step 1080, Rank 0, Elapsed 293.18, Work left 3.01%, Time left: 9.11, Est Total: 302.29, GFlops: 142640986.57, TFlops/GPU: 139.30
+Step 1090, Rank 0, Elapsed 294.00, Work left 2.83%, Time left: 8.57, Est Total: 302.57, GFlops: 142507256.86, TFlops/GPU: 139.17
+Step 1100, Rank 0, Elapsed 294.55, Work left 2.66%, Time left: 8.05, Est Total: 302.60, GFlops: 142494919.89, TFlops/GPU: 139.16
+Step 1110, Rank 0, Elapsed 295.21, Work left 2.49%, Time left: 7.54, Est Total: 302.76, GFlops: 142419895.25, TFlops/GPU: 139.08
+Step 1120, Rank 0, Elapsed 295.81, Work left 2.33%, Time left: 7.06, Est Total: 302.88, GFlops: 142363952.48, TFlops/GPU: 139.03
+Step 1130, Rank 0, Elapsed 296.52, Work left 2.18%, Time left: 6.61, Est Total: 303.12, GFlops: 142248370.75, TFlops/GPU: 138.91
+Step 1140, Rank 0, Elapsed 297.17, Work left 2.03%, Time left: 6.17, Est Total: 303.34, GFlops: 142148242.29, TFlops/GPU: 138.82
+Step 1150, Rank 0, Elapsed 297.68, Work left 1.89%, Time left: 5.75, Est Total: 303.43, GFlops: 142106780.17, TFlops/GPU: 138.78
+Step 1160, Rank 0, Elapsed 298.33, Work left 1.76%, Time left: 5.35, Est Total: 303.68, GFlops: 141988061.71, TFlops/GPU: 138.66
+Step 1170, Rank 0, Elapsed 298.83, Work left 1.64%, Time left: 4.97, Est Total: 303.80, GFlops: 141933525.99, TFlops/GPU: 138.61
+Step 1180, Rank 0, Elapsed 299.24, Work left 1.52%, Time left: 4.60, Est Total: 303.85, GFlops: 141909903.95, TFlops/GPU: 138.58
+Step 1190, Rank 0, Elapsed 299.84, Work left 1.40%, Time left: 4.26, Est Total: 304.10, GFlops: 141792392.34, TFlops/GPU: 138.47
+Step 1200, Rank 0, Elapsed 300.21, Work left 1.29%, Time left: 3.93, Est Total: 304.14, GFlops: 141770595.14, TFlops/GPU: 138.45
+Step 1210, Rank 0, Elapsed 300.66, Work left 1.19%, Time left: 3.62, Est Total: 304.28, GFlops: 141708376.49, TFlops/GPU: 138.39
+Step 1220, Rank 0, Elapsed 301.22, Work left 1.09%, Time left: 3.33, Est Total: 304.55, GFlops: 141582908.57, TFlops/GPU: 138.26
+Step 1230, Rank 0, Elapsed 301.54, Work left 1.00%, Time left: 3.05, Est Total: 304.59, GFlops: 141561903.63, TFlops/GPU: 138.24
+Step 1240, Rank 0, Elapsed 301.98, Work left 0.92%, Time left: 2.79, Est Total: 304.77, GFlops: 141478466.06, TFlops/GPU: 138.16
+Step 1250, Rank 0, Elapsed 302.48, Work left 0.83%, Time left: 2.54, Est Total: 305.02, GFlops: 141361659.10, TFlops/GPU: 138.05
+Step 1260, Rank 0, Elapsed 302.80, Work left 0.76%, Time left: 2.31, Est Total: 305.11, GFlops: 141322184.99, TFlops/GPU: 138.01
+Step 1270, Rank 0, Elapsed 303.19, Work left 0.69%, Time left: 2.10, Est Total: 305.28, GFlops: 141242033.69, TFlops/GPU: 137.93
+Step 1280, Rank 0, Elapsed 303.54, Work left 0.62%, Time left: 1.89, Est Total: 305.44, GFlops: 141171796.70, TFlops/GPU: 137.86
+Step 1290, Rank 0, Elapsed 303.93, Work left 0.56%, Time left: 1.70, Est Total: 305.63, GFlops: 141081286.12, TFlops/GPU: 137.77
+Step 1300, Rank 0, Elapsed 304.21, Work left 0.50%, Time left: 1.53, Est Total: 305.74, GFlops: 141031490.65, TFlops/GPU: 137.73
+Step 1310, Rank 0, Elapsed 304.45, Work left 0.45%, Time left: 1.36, Est Total: 305.81, GFlops: 140999214.86, TFlops/GPU: 137.69
+Step 1320, Rank 0, Elapsed 304.84, Work left 0.40%, Time left: 1.21, Est Total: 306.05, GFlops: 140888473.63, TFlops/GPU: 137.59
+Step 1330, Rank 0, Elapsed 305.12, Work left 0.35%, Time left: 1.07, Est Total: 306.19, GFlops: 140821428.41, TFlops/GPU: 137.52
+Step 1340, Rank 0, Elapsed 305.36, Work left 0.31%, Time left: 0.94, Est Total: 306.30, GFlops: 140774068.42, TFlops/GPU: 137.47
+Step 1350, Rank 0, Elapsed 305.68, Work left 0.27%, Time left: 0.82, Est Total: 306.51, GFlops: 140677603.88, TFlops/GPU: 137.38
+Step 1360, Rank 0, Elapsed 305.86, Work left 0.23%, Time left: 0.72, Est Total: 306.58, GFlops: 140644495.05, TFlops/GPU: 137.35
+Step 1370, Rank 0, Elapsed 306.10, Work left 0.20%, Time left: 0.62, Est Total: 306.72, GFlops: 140582461.99, TFlops/GPU: 137.29
+Step 1380, Rank 0, Elapsed 306.39, Work left 0.17%, Time left: 0.53, Est Total: 306.92, GFlops: 140488994.72, TFlops/GPU: 137.20
+Step 1390, Rank 0, Elapsed 306.58, Work left 0.15%, Time left: 0.45, Est Total: 307.03, GFlops: 140438193.65, TFlops/GPU: 137.15
+Step 1400, Rank 0, Elapsed 306.75, Work left 0.12%, Time left: 0.38, Est Total: 307.13, GFlops: 140393825.08, TFlops/GPU: 137.10
+Step 1410, Rank 0, Elapsed 307.00, Work left 0.10%, Time left: 0.31, Est Total: 307.31, GFlops: 140309193.43, TFlops/GPU: 137.02
+Step 1420, Rank 0, Elapsed 307.14, Work left 0.08%, Time left: 0.26, Est Total: 307.39, GFlops: 140271859.43, TFlops/GPU: 136.98
+Step 1430, Rank 0, Elapsed 307.31, Work left 0.07%, Time left: 0.21, Est Total: 307.52, GFlops: 140215444.68, TFlops/GPU: 136.93
+Step 1440, Rank 0, Elapsed 307.46, Work left 0.05%, Time left: 0.17, Est Total: 307.63, GFlops: 140164201.61, TFlops/GPU: 136.88
+Step 1450, Rank 0, Elapsed 307.63, Work left 0.04%, Time left: 0.13, Est Total: 307.76, GFlops: 140105788.63, TFlops/GPU: 136.82
+Step 1460, Rank 0, Elapsed 307.75, Work left 0.03%, Time left: 0.10, Est Total: 307.86, GFlops: 140061931.47, TFlops/GPU: 136.78
+Step 1470, Rank 0, Elapsed 307.86, Work left 0.02%, Time left: 0.08, Est Total: 307.93, GFlops: 140026884.42, TFlops/GPU: 136.75
+Step 1480, Rank 0, Elapsed 308.00, Work left 0.02%, Time left: 0.05, Est Total: 308.06, GFlops: 139969577.12, TFlops/GPU: 136.69
+Step 1490, Rank 0, Elapsed 308.11, Work left 0.01%, Time left: 0.04, Est Total: 308.15, GFlops: 139929101.58, TFlops/GPU: 136.65
+Step 1500, Rank 0, Elapsed 308.21, Work left 0.01%, Time left: 0.03, Est Total: 308.23, GFlops: 139890339.15, TFlops/GPU: 136.61
+Step 1510, Rank 0, Elapsed 308.34, Work left 0.01%, Time left: 0.02, Est Total: 308.35, GFlops: 139836613.55, TFlops/GPU: 136.56
+Step 1520, Rank 0, Elapsed 308.43, Work left 0.00%, Time left: 0.01, Est Total: 308.44, GFlops: 139798441.15, TFlops/GPU: 136.52
+Step 1530, Rank 0, Elapsed 308.52, Work left 0.00%, Time left: 0.00, Est Total: 308.53, GFlops: 139756324.91, TFlops/GPU: 136.48
+Step 1540, Rank 0, Elapsed 308.64, Work left 0.00%, Time left: 0.00, Est Total: 308.64, GFlops: 139706058.14, TFlops/GPU: 136.43
+Step 1550, Rank 0, Elapsed 308.72, Work left 0.00%, Time left: 0.00, Est Total: 308.72, GFlops: 139670934.41, TFlops/GPU: 136.40
+Step 1560, Rank 0, Elapsed 308.80, Work left 0.00%, Time left: 0.00, Est Total: 308.80, GFlops: 139632822.28, TFlops/GPU: 136.36
+LU factorization 308.86 sec
+
+IR Start with GPU
+# iterative refinement: step=0, residual=8.778080e-04, hpl-harness=1311160.547096
+# iterative refinement: step=1, residual=4.172508e-07, hpl-harness=623.022736
+# iterative refinement: step=2, residual=1.682939e-10, hpl-harness=0.251290
+	 IR Time 5.94 sec
+#END___: Mon Mar 27 04:36:14 2023
+
+314.822 sec. 136962679.949 GFlop/s resid = 1.682938764204205e-10 hpl-harness = 0.251289911 TFlop/s per GPU = 133.753
