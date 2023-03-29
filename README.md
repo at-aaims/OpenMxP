@@ -8,9 +8,11 @@
   - [Contributors](#contributors)
 
 Code reference: 
+
 Lu, Hao, Matheson, Michael, Wang, Feiyi, Joubert, Wayne, Ellis, Austin, and Oles, Vladyslav. OpenMxP-Opensource Mixed Precision Computing. Computer Software. https://github.com/at-aaims/openMxP. USDOE Office of Science (SC), Advanced Scientific Computing Research (ASCR). 29 Mar. 2023. Web. doi:10.11578/dc.20230315.3.
 
 Paper reference:
+
 H. Lu, et al., "Climbing the Summit and Pushing the Frontier of Mixed Precision Benchmarks at Extreme Scale," in SC22: International Conference for High Performance Computing, Networking, Storage and Analysis, Dallas, TX, USA, 2022 pp. 1-15.
 doi: 10.1109/SC41404.2022.00083
 
