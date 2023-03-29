@@ -119,10 +119,11 @@ This will have debug info built in.
 ## Developers
 * Hao Lu, <luh1@ornl.gov>
 * Michael Matheson, <mathesonma@ornl.gov> (Main Contact)
-* Vlad Oles, <olesv@ornl.gov>
-* Austin Ellis, <ellisja@ornl.gov>
 * Wayne Joubert, <joubert@ornl.gov>
 * Feiyi Wang, <fwang2@ornl.gov>
+* Vlad Oles, <olesv@ornl.gov> (Past)
+* Austin Ellis, <ellisja@ornl.gov> (Past)
+
 ## Contributors
 * Jakub Kurzak <Jakub.Kurzak@amd.com>
 * Alessandro Fanfarillo <Alessandro.Famfarillo@amd.com>
