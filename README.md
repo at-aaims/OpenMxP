@@ -1,20 +1,18 @@
-# OpenMxP: Open source Mixed Precision Computing
-- [OpenMxP: Opensource Mixed Precision Computing](#openmxp-opensource-mixed-precision-computing)
+# OpenMxP: Open Source Mixed Precision Computing
+- [OpenMxP: Open Source Mixed Precision Computing](#openmxp-open-source-mixed-precision-computing)
   - [Build instructions ( Frontier/Crusher )](#build-instructions--frontiercrusher-)
   - [Running instructions ( Frontier/Crusher )](#running-instructions--frontiercrusher-)
     - [Comments](#comments)
   - [Build instruction (Summit)](#build-instruction-summit)
-  - [Parameters](#parameters)
+  - [Tuning Parameters](#tuning-parameters)
+  - [Citation](#citation)
+    - [Code Repo](#code-repo)
+    - [SC22 Paper](#sc22-paper)
+  - [Developers](#developers)
   - [Contributors](#contributors)
 
-Code reference: 
 
-Lu, Hao, Matheson, Michael, Wang, Feiyi, Joubert, Wayne, Ellis, Austin, and Oles, Vladyslav. OpenMxP-Opensource Mixed Precision Computing. Computer Software. https://github.com/at-aaims/openMxP. USDOE Office of Science (SC), Advanced Scientific Computing Research (ASCR). 29 Mar. 2023. Web. doi:10.11578/dc.20230315.3.
 
-Paper reference:
-
-H. Lu, et al., "Climbing the Summit and Pushing the Frontier of Mixed Precision Benchmarks at Extreme Scale," in SC22: International Conference for High Performance Computing, Networking, Storage and Analysis, Dallas, TX, USA, 2022 pp. 1-15.
-doi: 10.1109/SC41404.2022.00083
 
 ## Build instructions ( Frontier/Crusher )
 
@@ -87,7 +85,7 @@ make
 This will have debug info built in.
 
 
-## Parameters
+## Tuning Parameters
 ```
 -log 1 ( print rank 0 messages )
 
@@ -113,6 +111,42 @@ This will have debug info built in.
 
 
 -sync ( enable cuda device sync after sgemm - currently only for bcast )
+```
+
+## Citation
+
+
+### Code Repo
+
+```
+@misc{doecode_102701,
+  title = {OpenMxP - Open Source Mixed Precision Computing},
+  author = {Lu, Hao and Matheson, Michael and Wang, Feiyi and Joubert, Wayne and Ellis, Austin and Oles, Vladyslav},
+  doi = {10.11578/dc.20230315.3},
+  url = {https://doi.org/10.11578/dc.20230315.3},
+  howpublished = {[Computer Software] \url{https://doi.org/10.11578/dc.20230315.3}},
+  year = {2023},
+  month = {mar}
+}
+```
+
+### SC22 Paper 
+
+```bibtex
+@inproceedings{10.5555/3571885.3571988,
+    author = {Lu, Hao and Matheson, Michael and Oles, Vladyslav and Ellis, Austin and Joubert, Wayne and Wang, Feiyi},
+    title = {Climbing the Summit and Pushing the Frontier of Mixed Precision Benchmarks at Extreme Scale},
+    year = {2022},
+    isbn = {9784665454445},
+    publisher = {IEEE Press},
+    booktitle = {Proceedings of the International Conference on High Performance Computing, Networking, Storage and Analysis},
+    articleno = {78},
+    numpages = {15},
+    doi = {10.1109/SC41404.2022.00083},
+    keywords = {linear algebra, parallel programming, exascale computing, high performance computing},
+    location = {Dallas, Texas},
+    series = {SC '22}
+}
 ```
 
 
