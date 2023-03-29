@@ -7,6 +7,8 @@
   - [Parameters](#parameters)
   - [Contributors](#contributors)
 
+Lu, Hao, Matheson, Michael, Wang, Feiyi, Joubert, Wayne, Ellis, Austin, and Oles, Vladyslav. OpenMxP-Opensource Mixed Precision Computing. Computer Software. https://github.com/at-aaims/openMxP. USDOE Office of Science (SC), Advanced Scientific Computing Research (ASCR). 29 Mar. 2023. Web. doi:10.11578/dc.20230315.3.
+
 ## Build instructions ( Frontier/Crusher )
 
 ```sh
