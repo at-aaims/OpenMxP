@@ -915,8 +915,8 @@ void panel_lu_async_wGPU_gdirect_alt2(Panels<FHigh> &p,
             }
 
 
-            /*hipEventSynchronize(diagonalupdate);
-            while ( myBcast(d_piv, ldpiv * b, grid.row, grid.vcomm, rootrow, k, grid.nrow, p.dcomm )
+            hipEventSynchronize(diagonalupdate);
+            /*while ( myBcast(d_piv, ldpiv * b, grid.row, grid.vcomm, rootrow, k, grid.nrow, p.dcomm )
 	                        == myB_KEEPTEST ){}
             while ( myBcast(d_piv, ldpiv * b, grid.col, grid.hcomm, rootcol, k, grid.ncol, p.dcomm )
 		                == myB_KEEPTEST ){}
