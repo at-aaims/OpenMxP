@@ -300,7 +300,7 @@ int main(int argc, char **argv)
     GPU_DEVICE_RESET( );
     GPU_DEVICE_SYNCHRONIZE( );
 
-#ifdef ROCM_OLCF_PLATFORM
+#ifndef CUDA_OLCF_PLATFORM
     rocblas_initialize();
 #endif 
 

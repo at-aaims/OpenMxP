@@ -165,7 +165,7 @@ inline int myBcast(F *buffer, int count, int my_rank, MPI_Comm comm, int root, i
             }
 //          ierr = MPI_Iprobe(prev_guy, k, comm, &go, &myStatus);
             ierr = MPI_SUCCESS;
-	    go = 1;
+	        go = 1;
             if(ierr == MPI_SUCCESS) {
                 if(go != 0) {
                     ierr = MPI_Recv(buffer, count, datatype, prev_guy, k, comm, &myStatus);
@@ -766,13 +766,15 @@ void panel_lu_async_wGPU_blockBcast(Panels<FHigh> &p,
 	       		rrp_flag = rlp_flag = myB_KEEPTEST;
 				int firsttime=1;
                 do {
-                    if(rlp_flag == myB_KEEPTEST)
+                    if(rlp_flag == myB_KEEPTEST){
                         rlp_flag = myBcast_irecv(
                             (*lnext)(i + 1), lnext->get_lda() * b, grid.col, grid.hcomm, rootcol, k, grid.ncol, p.comm, &lrequest,firsttime);
-                    if(rrp_flag == myB_KEEPTEST)
+                    }
+                    if(rrp_flag == myB_KEEPTEST){
                         rrp_flag = myBcast_irecv(
                             (*rnext)(j + 1), rnext->get_lda() * b, grid.row, grid.vcomm, rootrow, k, grid.nrow, p.comm, &rrequest,firsttime);
-                	firsttime =0;
+                    }
+                    firsttime =0;
 				} while(rrp_flag == myB_KEEPTEST || rlp_flag == myB_KEEPTEST);
 
 			}
@@ -880,13 +882,15 @@ void panel_lu_async_wGPU_blockBcast(Panels<FHigh> &p,
 				lnext->set_start(i + 1);
                 rrp_flag = rlp_flag = myB_KEEPTEST;
                 do {
-                    if(rlp_flag == myB_KEEPTEST)
+                    if(rlp_flag == myB_KEEPTEST){
                         rlp_flag = myBcast_irecv(
                             (*lnext)(i + 1), lnext->get_lda() * b, grid.col, grid.hcomm, rootcol, k, grid.ncol, p.comm, &lrequest, firsttime);
-                    if(rrp_flag == myB_KEEPTEST)
+                    }
+                    if(rrp_flag == myB_KEEPTEST){
                         rrp_flag = myBcast_irecv(
                             (*rnext)(j), rnext->get_lda() * b, grid.row, grid.vcomm, rootrow, k, grid.nrow, p.comm, &rrequest, firsttime);
-                	firsttime=0;
+                    }
+                    firsttime=0;
 				} while(rrp_flag == myB_KEEPTEST || rlp_flag == myB_KEEPTEST);
 			}
             ++i;

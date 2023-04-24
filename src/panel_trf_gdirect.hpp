@@ -252,11 +252,6 @@ void panel_lu_async_wGPU_gdirect_alt1(Panels<FHigh> &p,
         kend = nb;
 
     int haveGEMM, haveGETRF;
-    hipEvent_t eBgn , eEnd ; // gemm
-    hipEvent_t eBgn2, eEnd2; // getrf
-    hipEvent_t eBgn3, eEnd3; // trsm
-    hipEvent_t eBgn4, eEnd4; // convert
-    hipEvent_t eBgn5, eEnd5; // convert
 
     float mSec    = 0.0; // gemm
     float t_mSec  = 0.0; // gemm total
@@ -649,11 +644,6 @@ void panel_lu_async_wGPU_gdirect_alt2(Panels<FHigh> &p,
         kend = nb;
 
     int haveGEMM, haveGETRF;
-    hipEvent_t eBgn , eEnd ; // gemm
-    hipEvent_t eBgn2, eEnd2; // getrf
-    hipEvent_t eBgn3, eEnd3; // trsm
-    hipEvent_t eBgn4, eEnd4; // convert
-    hipEvent_t eBgn5, eEnd5; // convert
 
     float mSec    = 0.0; // gemm
     float t_mSec  = 0.0; // gemm total
@@ -668,12 +658,12 @@ void panel_lu_async_wGPU_gdirect_alt2(Panels<FHigh> &p,
 
     PrintLogMsg( "Entering LU\n" );
 
-    hipEvent_t diagonalupdate, lnextupdate,rnextupdate;
-    hipEventCreate( &diagonalupdate);
-    hipEventCreate( &lnextupdate);
-    hipEventCreate( &rnextupdate);
+    GPU_EVENT_T diagonalupdate, lnextupdate,rnextupdate;
+    GPU_EVENTCREATE( &diagonalupdate);
+    GPU_EVENTCREATE( &lnextupdate);
+    GPU_EVENTCREATE( &rnextupdate);
 
-    GPU_EVENTCREATE( &eBgn  );
+    /*GPU_EVENTCREATE( &eBgn  );
     GPU_EVENTCREATE( &eEnd  );
     GPU_EVENTCREATE( &eBgn2 );
     GPU_EVENTCREATE( &eEnd2 );
@@ -682,7 +672,7 @@ void panel_lu_async_wGPU_gdirect_alt2(Panels<FHigh> &p,
     GPU_EVENTCREATE( &eBgn4 );
     GPU_EVENTCREATE( &eEnd4 );
     GPU_EVENTCREATE( &eBgn5 );
-    GPU_EVENTCREATE( &eEnd5 );
+    GPU_EVENTCREATE( &eEnd5 );*/
 
     int          n_gemm = 0;
     static int   mnk   [ 10 ][ 3 ];  // m - n - k dimensions 
@@ -811,6 +801,7 @@ void panel_lu_async_wGPU_gdirect_alt2(Panels<FHigh> &p,
                          GPU_MEMCPY_DEVICE_TO_DEVICE);
 	        
             if ( alternative && p.alt == 2){
+#ifndef CUDA_OLCF_PLATFORM
                 cus_status=(rocsolver_strtri(p.solvHandle,
                                     GPUBLAS_FILL_MODE_UPPER,
                                     GPUBLAS_DIAG_NON_UNIT,
@@ -826,8 +817,10 @@ void panel_lu_async_wGPU_gdirect_alt2(Panels<FHigh> &p,
                                     d_piv,
                                     p.b,
                                     p.d_infoArray));
+#endif
             }
-            hipEventRecord(diagonalupdate, NULL);
+
+            GPU_EVENTRECORD(diagonalupdate, NULL);
             
             if(p.nprow - i - 1 > 0) {
                 if ( !CHECK_BIT( p.skip, 2 ) )
@@ -858,7 +851,7 @@ void panel_lu_async_wGPU_gdirect_alt2(Panels<FHigh> &p,
                 update_left_panels_wGPU(d_piv, ldpiv, p, i + 1, j);
             }
             convert_left_panels_wGPU(p, scalea, i + 1, j, *lnext);
-            hipEventRecord(lnextupdate, NULL);
+            GPU_EVENTRECORD(lnextupdate, NULL);
            
             // do GEMM of U
             if(p.npcol - j - 1 > 0) {
@@ -890,7 +883,7 @@ void panel_lu_async_wGPU_gdirect_alt2(Panels<FHigh> &p,
                 update_right_panels_wGPU(d_piv, ldpiv, p, i, j + 1);
             }
             convert_right_panels_wGPU(p, scaleb, i, j + 1, *rnext);
-            hipEventRecord(rnextupdate, NULL);
+            GPU_EVENTRECORD(rnextupdate, NULL);
 	        
             ++schur_row;
             ++schur_col;
@@ -901,13 +894,13 @@ void panel_lu_async_wGPU_gdirect_alt2(Panels<FHigh> &p,
                 if ( !CHECK_BIT( p.skip, 3 ) )
                 {
                     haveGEMM = 1;
-                    GPU_EVENTRECORD( eBgn, NULL );
+                    //GPU_EVENTRECORD( eBgn, NULL );
                     GPUBLAS_SGEMM_EX( p.cuHandle, GPUBLAS_OP_N, GPUBLAS_OP_T,
                                         p.b * (p.nprow - schur_row), p.b * (p.npcol - schur_col), b, &nalf,
                                     ( void * )(*lprev)(schur_row, 'd'), GPU_R_16F, (*lprev).get_lda(),
                                     ( void * )(*rprev)(schur_col, 'd'), GPU_R_16F, (*rprev).get_lda(),
                                     beta, p(schur_row, schur_col, 'd'), GPU_R_32F, p.lda );
-                GPU_EVENTRECORD( eEnd, NULL );
+                    //GPU_EVENTRECORD( eEnd, NULL );
                     mnk[ n_gemm ][ 0 ] = b * ( p.nprow - schur_row );
                     mnk[ n_gemm ][ 1 ] = b * ( p.npcol - schur_col );
                     mnk[ n_gemm ][ 2 ] = b;
@@ -915,11 +908,9 @@ void panel_lu_async_wGPU_gdirect_alt2(Panels<FHigh> &p,
             }
 
 
-            hipEventSynchronize(diagonalupdate);
-            /*while ( myBcast(d_piv, ldpiv * b, grid.row, grid.vcomm, rootrow, k, grid.nrow, p.dcomm )
-	                        == myB_KEEPTEST ){}
-            while ( myBcast(d_piv, ldpiv * b, grid.col, grid.hcomm, rootcol, k, grid.ncol, p.dcomm )
-		                == myB_KEEPTEST ){}
+            GPU_EVENTSYNC(diagonalupdate);
+            /*myBcast(d_piv, ldpiv * b, grid.row, grid.vcomm, rootrow, k, grid.nrow, p.dcomm);
+            myBcast(d_piv, ldpiv * b, grid.col, grid.hcomm, rootcol, k, grid.ncol, p.dcomm );
             */
             #pragma omp parallel for num_threads( NUM_THREAD )
 	        for ( int kk = 0; kk < NUM_THREAD; kk++ )
@@ -933,23 +924,17 @@ void panel_lu_async_wGPU_gdirect_alt2(Panels<FHigh> &p,
 		                == myB_KEEPTEST ){}
 	        }
         
-            /*hipEventSynchronize(lnextupdate);
-            while ( myBcast( (*lnext)(i + 1, 'd'), lnext->get_lda() * b, grid.col, grid.hcomm, rootcol, k, grid.ncol, p.comm)
-  	                    == myB_KEEPTEST ){}
-            hipEventSynchronize(rnextupdate);
-	        while ( myBcast( (*rnext)(j + 1, 'd'), rnext->get_lda() * b, grid.row, grid.vcomm, rootrow, k, grid.nrow, p.comm)
-		                == myB_KEEPTEST ){}*/
             
             #pragma omp parallel for num_threads( NUM_THREAD )
 	        for ( int kk = 0; kk < NUM_THREAD; kk++ )
 	        {
 	            if ( kk == 1 ){
-                    hipEventSynchronize(lnextupdate);
+                    GPU_EVENTSYNC(lnextupdate);
                     while ( myBcast( (*lnext)(i + 1, 'd'), lnext->get_lda() * b, grid.col, grid.hcomm, rootcol, k, grid.ncol, p.comm)
   	                    == myB_KEEPTEST ){}
                 }
 	            if ( kk == 2 ){
-                    hipEventSynchronize(rnextupdate);
+                    GPU_EVENTSYNC(rnextupdate);
 	                while ( myBcast( (*rnext)(j + 1, 'd'), rnext->get_lda() * b, grid.row, grid.vcomm, rootrow, k, grid.nrow, p.comm)
 		                == myB_KEEPTEST ){}
                 }
@@ -998,7 +983,7 @@ void panel_lu_async_wGPU_gdirect_alt2(Panels<FHigh> &p,
                 update_right_panels_wGPU(d_piv, ldpiv, p, i, j);
             }
 	        convert_right_panels_wGPU(p, scaleb, i, j, *rnext);
-	        hipEventRecord(rnextupdate, NULL);
+	        GPU_EVENTRECORD(rnextupdate, NULL);
 
             // Lauching Trailing update
 	        if(p.nprow - schur_row > 0 && p.npcol - schur_col > 0) {
@@ -1014,12 +999,6 @@ void panel_lu_async_wGPU_gdirect_alt2(Panels<FHigh> &p,
 
             lnext->set_start(i + 1);
 
-            /*while ( myBcast( (*lnext)(i + 1,'d'), lnext->get_lda() * b, grid.col, grid.hcomm, rootcol, k, grid.ncol, p.comm)
-		                == myB_KEEPTEST ){}
-
-            hipEventSynchronize(rnextupdate);
-            while ( myBcast( (*rnext)(j,'d'), rnext->get_lda() * b, grid.row, grid.vcomm, rootrow, k, grid.nrow, p.comm)
-		                == myB_KEEPTEST ){}*/
 
             #pragma omp parallel for num_threads( NUM_THREAD )
 	        for ( int kk = 0; kk < NUM_THREAD; kk++ )
@@ -1029,7 +1008,7 @@ void panel_lu_async_wGPU_gdirect_alt2(Panels<FHigh> &p,
 		                == myB_KEEPTEST ){}
                 }
                 if ( kk == 2 ){
-                    hipEventSynchronize(rnextupdate);
+                    GPU_EVENTSYNC(rnextupdate);
                     while ( myBcast( (*rnext)(j,'d'), rnext->get_lda() * b, grid.row, grid.vcomm, rootrow, k, grid.nrow, p.comm)
 		                == myB_KEEPTEST ){}
                 }
@@ -1074,7 +1053,7 @@ void panel_lu_async_wGPU_gdirect_alt2(Panels<FHigh> &p,
                 update_left_panels_wGPU(d_piv, ldpiv, p, i, j);
             }
             convert_left_panels_wGPU(p, scalea, i, j, *lnext);
-            hipEventRecord(lnextupdate, NULL);
+            GPU_EVENTRECORD(lnextupdate, NULL);
 
             if(p.nprow - schur_row > 0 && p.npcol - schur_col > 0) {
          	    if ( !CHECK_BIT( p.skip, 3 ) )
@@ -1089,17 +1068,12 @@ void panel_lu_async_wGPU_gdirect_alt2(Panels<FHigh> &p,
             }
 
             rnext->set_start(j + 1);
-            /*hipEventSynchronize(lnextupdate);
-            while ( myBcast( (*lnext)(i,'d'), lnext->get_lda() * b, grid.col, grid.hcomm, rootcol, k, grid.ncol, p.comm)
-                        == myB_KEEPTEST ){}
-            while ( myBcast( (*rnext)(j + 1,'d'), rnext->get_lda() * b, grid.row, grid.vcomm, rootrow, k, grid.nrow, p.comm)
-                        == myB_KEEPTEST ){}*/
                         
             #pragma omp parallel for num_threads( NUM_THREAD )
             for ( int kk = 0; kk < NUM_THREAD; kk++ )
             {
                 if ( kk == 1 ){
-                    hipEventSynchronize(lnextupdate);
+                    GPU_EVENTSYNC(lnextupdate);
                     while ( myBcast( (*lnext)(i,'d'), lnext->get_lda() * b, grid.col, grid.hcomm, rootcol, k, grid.ncol, p.comm)
                         == myB_KEEPTEST ){}
                 }
@@ -1177,17 +1151,6 @@ void panel_lu_async_wGPU_gdirect_alt2(Panels<FHigh> &p,
        printf( "LU factorization %.2f sec\n", lu_time * 1.0e-09 );
        fflush( stdout );
     }
-
-    GPU_EVENTDESTROY( eBgn  );
-    GPU_EVENTDESTROY( eEnd  );
-    GPU_EVENTDESTROY( eBgn2 );
-    GPU_EVENTDESTROY( eEnd2 );
-    GPU_EVENTDESTROY( eBgn3 );
-    GPU_EVENTDESTROY( eEnd3 );
-    GPU_EVENTDESTROY( eBgn4 );
-    GPU_EVENTDESTROY( eEnd4 );
-    GPU_EVENTDESTROY( eBgn5 );
-    GPU_EVENTDESTROY( eEnd5 );
 
 }
 

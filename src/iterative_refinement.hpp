@@ -9,6 +9,7 @@
 #include "timer.hpp"
 #include <cfloat>
 #include <cstdio>
+#include "fp16_gpu_kernels.h"
 
 struct IRErrors {
     double residual;

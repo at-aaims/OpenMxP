@@ -7,9 +7,9 @@
 #include "grid.hpp"
 #include "timer.hpp"
 #include <mpi.h>
+#include "fp16_gpu_kernels.h"
 
-
-#define MV_THREADS 256
+/*#define MV_THREADS 256
 __global__ void otf_gemv_diag_d(int n, int b, double alpha, double const* __restrict__ x, double * y, 
         RandStat stat_ij, RandCoeff incl1, RandCoeff jump_thread, double const* diag)
 {
@@ -114,7 +114,7 @@ void otf_gemv_h(Matgen<double> const& mg, Panels<FPanel>const& p,
             GPU_THREAD_SYNCHRONIZE(0);
         }
     }
-}
+}*/
 
 template <typename FPanel, typename FAcc, template<class> class Matgen>
 void panel_gemv_h(FAcc alpha, Panels<FPanel>const& p, Matgen<FAcc>const& mg, 

@@ -244,7 +244,7 @@ inline void shgemm(int m, int n, int k, float alpha, fp16 const *a, int lda,
 #endif
 
 #ifdef FP16_IS_NOT_SUPPORTED
-#warning "FP16 IS NOT SUPPORTED"
+//#warning "FP16 IS NOT SUPPORTED"
 typedef unsigned short fp16;
 
 // do nothing.

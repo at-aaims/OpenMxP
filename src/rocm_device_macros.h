@@ -15,7 +15,7 @@
 
 // #define GPU_EVENT
 
-#ifdef GPU_EVENT
+/*#ifdef GPU_EVENT
 #define GPU_EVENTCREATE(a)       hipEventCreate(a)
 #define GPU_EVENTRECORD(a,b)     hipEventRecord(a,b)
 #define GPU_EVENTSYNC(a)         hipEventSynchronize(a)
@@ -27,14 +27,20 @@
 #define GPU_EVENTSYNC(a)         { }
 #define GPU_EVENTELAPSED(a,b,c)  { }
 #define GPU_EVENTDESTROY(a)      { }
-#endif
+#endif*/
 
 //#define SKIP       
 #ifdef SKIP
 #define checkGPUblas(a) { }
 #endif
 
-//#define DOUBLE
+#define GPU_EVENTCREATE(a)       hipEventCreate(a)
+#define GPU_EVENTRECORD(a,b)     hipEventRecord(a,b)
+#define GPU_EVENTSYNC(a)         hipEventSynchronize(a)
+#define GPU_EVENTELAPSED(a,b,c)  hipEventElapsedTime(a,b,c)
+#define GPU_EVENTDESTROY(a)      hipEventDestroy(a)
+#define GPU_EVENT_T hipEvent_t
+
 
 // *** BASIC HIP MACROS ***
 // Kernel Macros

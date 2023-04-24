@@ -5,7 +5,7 @@
 #include <cstring>
 #include <cassert>
 
-#include "fp16_gpu_kernels.h"
+//#include "fp16_gpu_kernels.h"
 
 #include "device_macros.h"
 
@@ -27,7 +27,7 @@ extern int my_init;
 #define RB_1RM_IR 6
 #define RB_2RM_IR 7
 
-void print_matrix(const float *A, int lda, int size) {
+inline void print_matrix(const float *A, int lda, int size) {
     int numcolum = size / lda;
     for (int i = 0; i < lda; i++) {
         for (int j = 0; j < numcolum; j++)
@@ -37,7 +37,7 @@ void print_matrix(const float *A, int lda, int size) {
     printf("\n");
 }
 
-void print_matrix(float *A, int lda, int size) {
+inline void print_matrix(float *A, int lda, int size) {
     int numcolum = size / lda;
     for (int i = 0; i < lda; i++) {
         for (int j = 0; j < numcolum; j++)
@@ -47,7 +47,7 @@ void print_matrix(float *A, int lda, int size) {
     printf("\n");
 }
 
-void print_matrix(double *A, int lda, int size) {
+inline void print_matrix(double *A, int lda, int size) {
     int numcolum = size / lda;
     //if(grank == 0 || grank == 4)
     for (int i = 0; i < lda; i++) {
@@ -59,7 +59,7 @@ void print_matrix(double *A, int lda, int size) {
     fflush(stdout);
 }
 
-void print_diag(double *A, int lda, int size) {
+inline void print_diag(double *A, int lda, int size) {
     int numcolum = size / lda;
     for (int i = 0; i < lda; i++) {
         int j = i;
@@ -68,7 +68,7 @@ void print_diag(double *A, int lda, int size) {
     printf("\n");
 }
 
-void print_diag(float *A, int lda, int size) {
+inline void print_diag(float *A, int lda, int size) {
     int numcolum = size / lda;
     for (int i = 0; i < lda; i++) {
         int j = i;
@@ -77,7 +77,7 @@ void print_diag(float *A, int lda, int size) {
     printf("\n");
 }
 
-void print_last_3diag(float *A, int lda, int size) {
+inline void print_last_3diag(float *A, int lda, int size) {
     int numcolum = size / lda;
     for (int i = lda - 3; i < lda; i++) {
         int j = i;
@@ -86,7 +86,7 @@ void print_last_3diag(float *A, int lda, int size) {
     printf("\n");
 }
 
-void print_matrix(__half *A, int lda, int size) {
+inline void print_matrix(__half *A, int lda, int size) {
     int numcolum = size / lda;
     for (int i = 0; i < lda; i++) {
         for (int j = 0; j < numcolum; j++)
@@ -96,7 +96,7 @@ void print_matrix(__half *A, int lda, int size) {
     printf("\n");
 }
 
-void print_linear(__half *A, int size) {
+inline void print_linear(__half *A, int size) {
     // int numcolum = size/lda;
     for (int i = 0; i < size; i++) {
         printf("%.3f ", __half2float(A[i]));
@@ -522,6 +522,7 @@ void divcolv(Panels<F> const &p, Fv const *x, Fv *y) {
 
 
 // ORNL VECTOR OPS
+ /*
 template<typename F>
 void copycolv_h(Panels<F>const& p, double const* x, double* y )
 {
@@ -617,9 +618,9 @@ void addcolv_h(Panels<F>const& p, double const* x, double* y )
     {
         size_t ipos = (size_t)ii * istride + i1;
         if (ipos % jstride == j1) {
-            addcolv_d<<< 1, VECTOR_OP_THREADS>>> (b, x+ii*b, y+ii*b);
+            template addcolv_d<<< 1, VECTOR_OP_THREADS>>> (b, x+ii*b, y+ii*b);
         }
     }
 }
-
+*/
 #endif

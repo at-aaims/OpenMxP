@@ -1,6 +1,7 @@
 #ifndef LOG_HPP
 #define LOG_HPP
-
+#include <stdio.h>
+#include <stdarg.h>
 // remove the following will compile away debug message, but keep info
 // or make it conditional by: #ifdef DEBUG
 #if 0
@@ -27,11 +28,7 @@ extern int grank, gsize, glog;
 #endif
 #endif
 
-void PrintMsg(const char *fmt...) {
-    if (grank == 0) {
-//      LOG->info(fmt);
-    }
-}
+
 
 // #define PrintLogMsg( ... ) { if ( grank == 0  &&  glog == 1 ) LOG->info( __VA_ARGS__ ); }
 
@@ -50,4 +47,11 @@ void PrintLogMsg( const char * fmt, ... )
    }
 }
 
+inline
+void PrintMsg(const char *fmt...) {
+    if (grank == 0) {
+//      LOG->info(fmt);
+        PrintLogMsg(fmt);
+    }
+}
 #endif

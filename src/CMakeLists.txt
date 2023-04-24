@@ -205,12 +205,13 @@ elseif( ${ARCHITECTURE} STREQUAL "ppc64le")
       ${CUDA_cusolver_LIBRARY}
       ${BLAS_LIBRARIES}
       ${CUDA_curand_LIBRARY}
-      spdlog cli11
+      #spdlog
+      #cli11
       )
 
     target_link_options(OpenMxP PUBLIC "-fopenmp")
     target_link_options(OpenMxP PUBLIC "-mcpu=native")
-    target_compile_options(OpenMxP PUBLIC  -W -Wall -fopenmp -mcpu=native -std=c++14 -O3)
+    target_compile_options(OpenMxP PUBLIC  -W -fopenmp -mcpu=native -std=c++14 -O3)
 
 endif()
 

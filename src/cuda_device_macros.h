@@ -11,6 +11,14 @@
 #include <cuda_fp16.h>
 
 // *** BASIC CUDA MACROS ***
+#define GPU_EVENTCREATE(a)       cudaEventCreate(a)
+#define GPU_EVENTRECORD(a,b)     cudaEventRecord(a,b)
+#define GPU_EVENTSYNC(a)         cudaEventSynchronize(a)
+#define GPU_EVENTELAPSED(a,b,c)  cudaEventElapsedTime(a,b,c)
+#define GPU_EVENTDESTROY(a)      cudaEventDestroy(a)
+#define GPU_EVENT_T cudaEvent_t
+#define CHECK_BIT(var,pos) ( (var>>pos) & 1 ) 
+
 // Kernel Macros
 #define GPU_BLOCKIDX_X \
     blockIdx.x
@@ -88,6 +96,9 @@
 
 #define GPU_DEVICE_SYNCHRONIZE() \
     cudaDeviceSynchronize()
+
+#define GPU_THREAD_SYNCHRONIZE(threadID) \
+    cudaStreamSynchronize(threadID); 
 
 #define GPU_FREE(memPointer) \
     cudaFree(memPointer)
@@ -198,9 +209,20 @@
 #define GPUBLAS_STRSM(cublasHandle, cuSide, cuFill, cuOp, cuDiag, M_dim, N_dim, alpha, memPointer_A, lda, memPointer_B, ldb) \
     cublasStrsm(cublasHandle, cuSide, cuFill, cuOp, cuDiag, M_dim, N_dim, alpha, memPointer_A, lda, memPointer_B, ldb)
 
+#define GPU_dscal(handle, n, alpha, x, incx) \
+    cublasDscal(handle, n, alpha, x, incx)
+
+#define GPU_setValue(x, value, size) \
+    cudaMemset(x, value, size)
+
+#define GPU_DAXPY(blasHandle, size, alpha, A, Ainc, B, Binc) \
+    cublasDaxpy(blasHandle, size, alpha, A, Ainc, B, Binc)
+
+#define GPU_DTRSV(blasHandle, rocFill, rocOp, rocDiag, M_dim, memPointer_A, lda, memPointer_B, Binc ) \
+    cublasDtrsv(blasHandle, rocFill, rocOp, rocDiag, M_dim, memPointer_A, lda, memPointer_B, Binc)
+
 // Non-Simple Kernels
-//#define GPUBLAS_GET_ERROR_STRING(cublasStatus) \
-//    cublasGetErrorString(cublasStatus)
+//#define GPUBLAS_GET_ERROR_STRING(cublasStatus) cublasGetErrorString(cublasStatus)
 
 #define GPUBLAS_SGEMM_EX(cublasHandle, cuOp_A, cuOp_B, M_dim, N_dim, k_dim, alpha, memPointer_A, datatype_A, lda, memPointer_B, datatype_B, ldb, beta, memPointer_C, datatype_C, ldc) \
     cublasSgemmEx(cublasHandle, cuOp_A, cuOp_B, M_dim, N_dim, k_dim, alpha, memPointer_A, datatype_A, lda, memPointer_B, datatype_B, ldb, beta, memPointer_C, datatype_C, ldc)

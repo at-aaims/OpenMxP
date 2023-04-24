@@ -4,58 +4,7 @@
 #include "highammgen.hpp"
 #include "panel.hpp"
 #include <mpi.h>
-#define NORM_THREADS 1024
-//#include <thrust/extrema.h>
-//#include <thrust/execution_policy.h>
 
-__global__ void calc_infnorm_d(int b, double* __restrict__ x, double* __restrict__ result) {
-    __shared__ double sdata[NORM_THREADS];
-    
-    size_t id = threadIdx.x;
-    sdata[id] = 0.0;
-
-    for (int j = 0; j + id < b; j += NORM_THREADS) 
-    {
-        sdata[id] = fmax(sdata[id], fabs(x[id+j]));
-    }
-    __syncthreads();
-
-    for (unsigned int s = NORM_THREADS / 2; s > 0; s >>= 1) {
-        if (id < s) {
-            sdata[id] = fmax(sdata[id], sdata[id + s]);
-        }
-        __syncthreads();
-    }
-
-    if (id == 0) {
-        result[id] = sdata[0];
-    }
-}
-
-template <typename F>
-double colv_infnorm_h(Panels<F> const &p, double *dx, Grid &g, double* workspace) {
-    // computes the inf-norm of the distributed column vector dx.
-    // descriptros are derived from p
-    int nprow = p.nprow;
-    int b = p.b;
-    int i1 = p.i1;
-    int j1 = p.j1;
-    int istride = p.istride;
-    int jstride = p.jstride;
-    double norm = 0.;
-    double t = 0;
-    for (int i = 0; i < nprow; ++i) {
-        int ipos = i1 + i * istride;
-        if ((ipos % jstride) == j1) {
-            calc_infnorm_d<<<1,NORM_THREADS>>>(b, dx + b * i, workspace);
-            GPU_DEVICE_SYNCHRONIZE();
-            GPU_MEMCPY(&t, workspace, sizeof(double), GPU_MEMCPY_DEVICE_TO_HOST);
-            norm = norm >= t ? norm : t;
-        }
-    }
-    MPI_Allreduce(MPI_IN_PLACE, &norm, 1, MPI_DOUBLE, MPI_MAX, g.commworld);
-    return norm;
-}
 
 template <typename F> F calc_infnorm(int n, F const *x) {
     F norm = static_cast<F>(0);
