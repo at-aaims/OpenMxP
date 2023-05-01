@@ -1,5 +1,5 @@
-# OpenMxP: Open Source Mixed Precision Computing
-- [OpenMxP: Open Source Mixed Precision Computing](#openmxp-open-source-mixed-precision-computing)
+# OpenMxP: Open-Source Mixed Precision Computing
+- [OpenMxP: Open-Source Mixed Precision Computing](#openmxp-open-source-mixed-precision-computing)
   - [Build instructions ( Frontier/Crusher )](#build-instructions--frontiercrusher-)
   - [Running instructions ( Frontier/Crusher )](#running-instructions--frontiercrusher-)
     - [Comments](#comments)
